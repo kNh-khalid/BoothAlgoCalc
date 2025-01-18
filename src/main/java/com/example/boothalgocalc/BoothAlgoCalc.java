@@ -1,5 +1,4 @@
 package com.example.boothalgocalc;
-
 public class BoothAlgoCalc {
 
     public static String getBinary(int n) {
@@ -96,7 +95,10 @@ public class BoothAlgoCalc {
         P = P + Q + "0";
         int half = (P.length()-1)/2;
 
-        StringBuilder result = new StringBuilder("n\t\tA\t\tQ\t\tQ-1\n");
+        StringBuilder result = new StringBuilder("n\tA\tQ\tQ-1\n");
+        result.append(q).append("\t").append(P.substring(0,half))
+                .append("\t").append(P.substring(half,P.length()-1)).append("\t")
+                .append(P.substring(P.length()-1)).append("\n");
         for (int i = q - 1; i >= 0; i--) {
             if (P.endsWith("01")) {
                 P = binaryAdd(P, A);
@@ -104,9 +106,9 @@ public class BoothAlgoCalc {
                 P = binaryAdd(P, S);
             }
             P = shiftRight(P);
-            result.append(i).append("\t\t")
-                    .append(P.substring(0,half)).append("\t\t")
-                    .append(P.substring(half,P.length()-1)).append("\t\t")
+            result.append(i).append("\t")
+                    .append(P.substring(0,half)).append("\t")
+                    .append(P.substring(half,P.length()-1)).append("\t")
                     .append(P.substring(P.length()-1)).append("\n");
         }
         String sentence = "";

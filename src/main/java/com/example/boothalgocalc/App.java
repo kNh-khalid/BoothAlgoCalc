@@ -1,15 +1,15 @@
 package com.example.boothalgocalc;
 
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class App extends Application {
+
     @Override
     public void start(Stage stage) {
         Label num1Label = new Label("Enter first num:");
@@ -19,24 +19,17 @@ public class App extends Application {
         TextField num2Field = new TextField();
         Button calculateButton = new Button("Calculate");
         TextArea resultArea = new TextArea();
-        Image img = new Image("flowchart.png");
-        ImageView imgview = new ImageView(img);
 
         HBox inputBox = new HBox(10, num1Label, num1Field, num2Label, num2Field, calculateButton);
         HBox titleContainer = new HBox(title);
-        HBox flownresult = new HBox(20,imgview,resultArea);
-        VBox root = new VBox(30, titleContainer,inputBox,flownresult);
+        VBox root = new VBox(30, titleContainer,inputBox, resultArea);
 
         resultArea.setEditable(false); //just for display cannot edit
         resultArea.setMaxWidth(300);
-        resultArea.setMaxHeight(200);
-        imgview.setFitHeight(350);
-        imgview.setFitWidth(250);
         titleContainer.setAlignment(Pos.CENTER);
         titleContainer.setMinHeight(50);
         inputBox.setAlignment(Pos.CENTER);
         root.setAlignment(Pos.CENTER);
-        flownresult.setAlignment(Pos.CENTER);
 
         calculateButton.setOnAction(e -> {
             try {
@@ -60,7 +53,7 @@ public class App extends Application {
                 "-fx-background-color: skyblue";
         String inputStyle = "-fx-font-family: 'Comic Sans MS';" +
                 "-fx-font-size: 12;";
-        String outputStyle = "-fx-font-family: 'Comic Sans MS';" +
+        String outputStyle = "-fx-font-family: 'Monospace';" +
                 "-fx-font-size: 13;";
         String buttonStyle = "-fx-font-family: 'Comic Sans MS';" +
                 "-fx-font-size: 12;" +
@@ -71,7 +64,7 @@ public class App extends Application {
         inputBox.setStyle(inputStyle);
         calculateButton.setStyle(buttonStyle);
 
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 700, 400);
         stage.setScene(scene);
         stage.setTitle("Booth's Algorithm Calculator");
         stage.show();
